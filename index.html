@@ -1,0 +1,282 @@
+<!-- index.html - Ready to upload for GitHub Pages
+Place this file along with:
+photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg, photo5.jpg, birthday_song.mp3
+in the same folder, then upload all files to GitHub.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday My Beautiful Majesty Angel Queen ❤️</title>
+<style>
+  body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#0b0712;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    padding:20px;
+  }
+  .card{
+    max-width:960px;
+    width:100%;
+    background:rgba(255,255,255,0.04);
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
+    position:relative;
+    overflow:hidden;
+  }
+  h1{
+    text-align:center;
+    margin:0 0 10px;
+    font-size:30px;
+  }
+
+  /* Slideshow – each slide uses its own pixel size */
+  .slideshow{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:12px;
+  }
+  .slides{
+    position:relative;
+  }
+  .slide{
+    display:none;          /* only active one is visible */
+  }
+  .slide.active{
+    display:block;
+  }
+  .slide img{
+    display:block;
+    /* shows image at its real pixel size */
+    box-shadow:0 0 18px rgba(0,0,0,0.6);
+    border-radius:12px;
+  }
+
+  .arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    padding:10px 14px;
+    border-radius:50%;
+    background:rgba(0,0,0,0.4);
+    border:none;
+    font-size:22px;
+    cursor:pointer;
+  }
+  .left{left:10px}
+  .right{right:10px}
+
+  .dots{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+    margin-top:10px;
+  }
+  .dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#666;
+    cursor:pointer;
+  }
+  .dot.active{
+    background:#ff7aa3;
+  }
+
+  .msg-block{
+    text-align:center;
+    margin-top:20px;
+  }
+  #typed{
+    font-size:20px;
+    font-weight:700;
+    min-height:40px;
+  }
+  #typed::after{
+    content:'';
+    display:inline-block;
+    width:8px;
+    height:20px;
+    background:#ffd1e0;
+    margin-left:4px;
+    animation:blink 1s infinite;
+  }
+  @keyframes blink{50%{opacity:0}}
+
+  .cute-sub{
+    margin-top:10px;
+    font-size:16px;
+    opacity:0.9;
+  }
+
+  .secret-area{
+    text-align:center;
+    margin-top:15px;
+  }
+  .btn{
+    padding:10px 16px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+  }
+  .play-btn{
+    background:#ff7aa3;
+    color:#111;
+  }
+  .mute-btn{
+    background:#333;
+    color:#fff;
+  }
+  .secret{
+    margin-top:10px;
+    background:rgba(255,255,255,0.08);
+    padding:12px;
+    border-radius:10px;
+    display:none;
+  }
+
+  .footer{
+    margin-top:20px;
+    text-align:center;
+    opacity:0.8;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Happy Birthday, My Beautiful Majesty Angel Queen 🎂❤️</h1>
+
+  <div class="slideshow" id="slideshow">
+    <div class="slides">
+      <!-- exact pixel sizes for each image -->
+      <div class="slide active" data-index="0">
+        <img src="photo1.jpg" alt="" width="1300" height="1964">
+      </div>
+      <div class="slide" data-index="1">
+        <img src="photo2.jpg" alt="" width="1320" height="2147">
+      </div>
+      <div class="slide" data-index="2">
+        <img src="photo3.jpg" alt="" width="1320" height="2427">
+      </div>
+      <div class="slide" data-index="3">
+        <img src="photo4.jpg" alt="" width="1320" height="1674">
+      </div>
+      <div class="slide" data-index="4">
+        <img src="photo5.jpg" alt="" width="839" height="1395">
+      </div>
+    </div>
+    <!-- You can absolutely-position these hearts if you want later -->
+    <button class="arrow left" id="prev">❤️</button>
+    <button class="arrow right" id="next">❤️</button>
+  </div>
+
+  <div class="dots" id="dots">
+    <div class="dot active" data-index="0"></div>
+    <div class="dot" data-index="1"></div>
+    <div class="dot" data-index="2"></div>
+    <div class="dot" data-index="3"></div>
+    <div class="dot" data-index="4"></div>
+  </div>
+
+  <div class="msg-block">
+    <h2 id="typed"></h2>
+    <div class="cute-sub">Even on my busiest days, I count the minutes until I see you.
+      You're my forever after my superior majesty❤️❤️❤️✨✨✨ — AK 💕</div>
+  </div>
+
+  <div class="secret-area">
+    <button class="btn play-btn" id="reveal">Reveal Secret 💌</button>
+    <button class="btn mute-btn" id="hide" style="display:none">Hide Secret</button>
+
+    <div class="secret" id="secret">
+      <strong>Secret:</strong> Even on my busiest days, I count the minutes until I see you.
+      You're my forever — AK 💕
+    </div>
+  </div>
+
+  <div style="margin-top:20px;text-align:center">
+    <button class="btn play-btn" id="playBtn">Play Music ▶</button>
+    <button class="btn mute-btn" id="muteBtn">Mute</button>
+    <audio id="audio" preload="auto" loop>
+      <source src="birthday_song.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="footer">Made with all my love ❤️ — Your AK</div>
+</div>
+
+<script>
+// Typing effect
+let msg = "My beautiful majesty angel queen — every day with you is my favorite day.";
+let i = 0;
+function type(){
+  if(i <= msg.length){
+    document.getElementById('typed').textContent = msg.slice(0,i);
+    i++;
+    setTimeout(type,40);
+  }
+}
+type();
+
+// Slideshow
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let current = 0;
+
+function showSlide(n){
+  slides.forEach(s=>s.classList.remove('active'));
+  dots.forEach(d=>d.classList.remove('active'));
+  current = (n + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+}
+
+document.getElementById('next').onclick = () => showSlide(current+1);
+document.getElementById('prev').onclick = () => showSlide(current-1);
+dots.forEach(d => d.onclick = () => showSlide(parseInt(d.dataset.index)));
+
+setInterval(() => showSlide(current+1), 4000);
+
+// Secret
+const secret = document.getElementById('secret');
+const reveal = document.getElementById('reveal');
+const hideBtn = document.getElementById('hide');
+
+reveal.onclick = () => {
+  secret.style.display = 'block';
+  reveal.style.display = 'none';
+  hideBtn.style.display = 'inline-block';
+};
+hideBtn.onclick = () => {
+  secret.style.display = 'none';
+  reveal.style.display = 'inline-block';
+  hideBtn.style.display = 'none';
+};
+
+// Music
+const audio = document.getElementById('audio');
+const playBtn = document.getElementById('playBtn');
+const muteBtn = document.getElementById('muteBtn');
+
+playBtn.onclick = () => {
+  if(audio.paused){
+    audio.play();
+    playBtn.textContent = 'Pause ⏸';
+  } else {
+    audio.pause();
+    playBtn.textContent = 'Play Music ▶';
+  }
+};
+muteBtn.onclick = () => {
+  audio.muted = !audio.muted;
+};
+</script>
+</body>
+</html>
